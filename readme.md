@@ -1,4 +1,7 @@
 # Webshop
 
 
-## new header
+## changes
+*header structuur*
+*header style*
+*header javascript*
