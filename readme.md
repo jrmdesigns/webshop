@@ -3,5 +3,5 @@
 
 ## changes
 *header structuur*<br/>
-*header style*
-*header javascript*
+*header style*<br/>
+*header javascript*<br/>
