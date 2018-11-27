@@ -1,7 +1,7 @@
 # Webshop
 
 
-## added
+## Added
 **27-11-2018**<br/>
 *homepage structure*<br/>
 *homepage style*<br/><br/>
