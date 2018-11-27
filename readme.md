@@ -3,8 +3,10 @@
 
 ## changes
 **27-11-2018**<br/>
-*footer structuur*<br/>
+*homepage structure*<br/>
+*homepage style*<br/><br/>
+*footer structure*<br/>
 *footer style*<br/><br/>
-*header structuur*<br/>
+*header structure*<br/>
 *header style*<br/>
 *header javascript*<br/>
