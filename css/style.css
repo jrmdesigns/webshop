@@ -7,6 +7,10 @@
     --grey-color: #e4e4e4;
 }
 
+html{
+    overflow-x: hidden;
+}
+
 @font-face{
     font-family: source;
     src: url("fonts/sourcesans.ttf");
@@ -40,6 +44,16 @@ h1, h2{
     padding: 0;
 }
 
+.rounded-left{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.rounded-right{
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
 /* BEGIN HEADER */
 
 
@@ -48,6 +62,12 @@ h1, h2{
 }
 
 #top-menu{
+    padding: 25px 30px 25px 30px;
+}
+
+
+#top-menu{
+    background-color: var(--light-grey-color);
     width: 96.75%;
     display:flex;
     justify-content: space-between;
@@ -56,7 +76,8 @@ h1, h2{
 
 #top-menu ul a li{
     display: inline;
-    
+    font-size: 20px;
+    line-height: 30px;
 }
 
 #top-menu .left-part ul a{
@@ -64,6 +85,10 @@ h1, h2{
     text-decoration: none;
     transition: all 1s;
     padding-right: 25px;
+}
+
+#top-menu .right-part{
+    margin-right: 10px;
 }
 
 #top-menu .right-part ul a{
@@ -78,7 +103,7 @@ h1, h2{
     width: 100%;
     display: none;
     position: absolute;
-    background-color: var(--blue-color);
+    background-color: rgba(96,98,137, .95);
 }
 
 #sub-menu ul:last-child{
@@ -100,6 +125,10 @@ h1, h2{
 
 #sub-menu ul a{
     color: var(--white-color);
+}
+
+#sub-menu ul a:hover{
+    color:black;
 }
 
 #sub-menu .left-part{
@@ -139,7 +168,7 @@ h1, h2{
 
 #user-menu {
     display: none;
-    background-color: #fff;
+    background-color: rgba(255,255,255,.9);
     width: 125px;
     position: absolute;
     right: 0px;
@@ -150,6 +179,13 @@ h1, h2{
     padding-bottom: 10px;
 }
 
+#logo{
+    margin-left:-70px;
+    padding:0;
+    font-size: 20px;
+    color: var(--blue-color);
+    text-transform: uppercase;
+}
 
 /* END HEADER */
 
@@ -189,17 +225,22 @@ h1, h2{
 
 #page-footer #social-media{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#page-footer #social-media a{
+#page-footer #social-media #social-media-wrapper{
+    display: flex;
+}
+
+#page-footer #social-media #social-media-wrapper a{
     color: var(--blue-color);
     font-size: 65px;
     margin: 10px;
 }
 
-#page-footer #social-media a:hover{
+#page-footer #social-media #social-media-wrapper a:hover{
     color: #000;
     text-shadow: 1px 1px 1px var(--blue-color);
 
@@ -215,3 +256,86 @@ h1, h2{
 
 
 /* END FOOTER */
+
+
+/* BEGIN HOME */
+
+
+#home-container{
+    padding: 25px ;
+    margin-bottom: 25px;
+}
+
+#home-container #big-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+#home-container #big-container .image50{
+    width:49%;
+}
+
+#home-container #big-container .image50 a{
+    color: gray;
+}
+
+#home-container #big-container .image50 a:hover h1{
+    color: var(--blue-color);
+    transform: translateY(-375px);
+    
+}
+
+#home-container #big-container .image50 a img{
+    width: 100%;
+}
+
+#home-container #big-container .image50 a h1{
+    position: relative;
+    transform: translateY(-350px);
+    font-size: 40px;
+    text-align:center;
+    transition: all 1s;
+}
+
+#home-container > h1{
+    text-align: center;
+    margin-top: -10px;
+    padding-bottom: 25px;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+#home-container #cat-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+#home-container #cat-container .cat-item a{
+    color: #000;
+}
+
+#home-container #cat-container .cat-item a:hover{
+    color: var(--blue-color);
+}
+
+#home-container #cat-container .cat-item a:hover img{
+    
+}
+
+#home-container #cat-container .cat-item{
+    width: 24%;
+    display: flex;
+    flex-direction: column;
+}
+
+#home-container #cat-container .cat-item img{
+    width: 100%;
+    border-radius: 50%;
+}
+
+#home-container #cat-container .cat-item h1{
+    font-size: 16px;
+    text-align: center;
+}
+
+/* END HOME */

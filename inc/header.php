@@ -16,10 +16,13 @@
     <header id="top-menu">
         <section class="left-part">
             <ul>
-                <a href="#" id="menu-button"><li>drop <i class="fas fa-caret-down"></i></li></a>
+                <a href="#" id="menu-button"><li>menu <i class="fas fa-caret-down"></i></li></a>
                 <a href="#"><li>link</li></a>
                 <a href="#"><li>link</li></a>
             </ul>
+        </section>
+        <section id="logo">
+            <h1>webshop</h1>
         </section>
         <section class="right-part">
             <ul>

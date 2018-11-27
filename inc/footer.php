@@ -34,13 +34,18 @@
                 </a>
                 <a href="#">
                     <li>LINK</li>
+                    
                 </a>
             </ul>
         </div>
         <div id="social-media">
+
+            <h1>WEBSHOP</h1>
+            <div id="social-media-wrapper">
                 <a href="https://www.linkedin.com/uas/login" target="_blank"><span class="fab fa-facebook"></span></a> 
                 <a href="https://www.twitter.com/" target="_blank"><span class="fab fa-twitter-square"></span></a>
                 <a href="https://www.facebook.com" target="_blank"><span class="fab fa-linkedin"></span></a>
+            </div>
         </div>
 
         <div id="footer-copyright">
