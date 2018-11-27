@@ -1,0 +1,154 @@
+:root{
+    --blue-color: #606289;
+    --blue-header: #1a1820;
+    --white-color: #fff;
+    --h2-color: #000;
+}
+
+@font-face{
+    font-family: source;
+    src: url("fonts/sourcesans.ttf");
+}
+
+*, a{
+    font-family: source;
+}
+
+body, ul{
+    margin: 0;
+    padding:0;
+}
+
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+    transition: color .5s;
+}
+
+a:hover{
+    color: black;
+}
+
+
+/* BEGIN HEADER */
+
+
+#top-menu, #sub-menu, #page-footer{
+    padding: 15px 25px;
+}
+
+#top-menu{
+    width: 96.75%;
+    display:flex;
+    justify-content: space-between;
+}
+
+
+#top-menu ul a li{
+    display: inline;
+    
+}
+
+#top-menu .left-part ul a{
+    color: var(--blue-color);
+    text-decoration: none;
+    transition: all 1s;
+    padding-right: 25px;
+}
+
+#top-menu .right-part ul a{
+    padding-left: 25px;
+}
+
+#top-menu ul a:hover{
+    color: var(--h2-color);
+}
+
+#sub-menu{
+    width: 100%;
+    display: none;
+    position: absolute;
+    background-color: var(--blue-color);
+}
+
+#sub-menu ul:last-child{
+    border-right: 1px solid var(--blue-header);
+    padding-right: 25px;
+}
+
+#sub-menu ul li {
+    padding-bottom: 10px;
+}
+
+
+#sub-menu .left-part ul li h1{
+    color: var(--h2-color);
+    font-size: 15px;
+    margin: 0px 0px 10px 0px;
+}
+
+
+#sub-menu ul a{
+    color: var(--white-color);
+}
+
+#sub-menu .left-part{
+    width: 15%;
+}
+
+.left-part, .right-part{
+    display:flex;
+    justify-content: space-between;
+}
+
+#sub-menu .right-part{
+    align-items: center;
+    justify-content: flex-start;
+    width: 85%;
+}
+
+#sub-menu .right-part .link-wrapper a{
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+    text-align: center;
+    color: var(--white-color);
+}
+
+#sub-menu .right-part .link-wrapper a .icon-link{
+    transition: color .5s;
+}
+
+#sub-menu .right-part .link-wrapper a:hover .icon-link{
+    color: black;
+}
+
+#sub-menu .right-part .link-wrapper a .icon-link{
+    font-size: 50px;
+}
+
+#user-menu {
+    display: none;
+    background-color: #fff;
+    width: 125px;
+    position: absolute;
+    right: 0px;
+    padding: 5px 0px 0px 25px;
+}
+
+#user-menu ul a li{
+    padding-bottom: 10px;
+}
+
+
+/* END HEADER */
+
+
+/* BEGIN FOOTER */
+
+
+
+/* END FOOTER */
