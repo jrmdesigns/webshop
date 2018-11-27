@@ -37,21 +37,16 @@
                 </a>
             </ul>
         </div>
-
         <div id="social-media">
-            <ul>
-                <li><a href="https://www.linkedin.com/uas/login" target="_blank"><span class="fab fa-facebook"></span></a> </li>
-                <li><a href="https://www.twitter.com/" target="_blank"><span class="fab fa-twitter-square"></span></a></li>
-                <li><a href="https://www.facebook.com" target="_blank"><span class="fab fa-linkedin"></span></a></li>
-            </ul>
+                <a href="https://www.linkedin.com/uas/login" target="_blank"><span class="fab fa-facebook"></span></a> 
+                <a href="https://www.twitter.com/" target="_blank"><span class="fab fa-twitter-square"></span></a>
+                <a href="https://www.facebook.com" target="_blank"><span class="fab fa-linkedin"></span></a>
         </div>
-    </footer>
-    <footer id="copyright">
-        <ul>
-            <li>&copy; Copyright Gorilla webshop</li>
-            <li><a href="#">link</a></li>
-            <li><a href="https://www.github.com/jrmdesigns/">designed by jrmdesigns</a></li>
-        </ul>
+
+        <div id="footer-copyright">
+           <span>&copy; Copyright Gorilla webshop</span>
+           <a href="https://www.github.com/jrmdesigns/">designed by jrmdesigns</a>
+        </div>
     </footer>
 </section>
 </body>
