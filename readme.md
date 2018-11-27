@@ -2,6 +2,6 @@
 
 
 ## changes
-*header structuur*
+*header structuur*\n
 *header style*
 *header javascript*
