@@ -1,0 +1,22 @@
+@media only screen and (max-width:756px){
+   #top-menu, #page-footer, #page-footer #footer-menu, #page-footer #social-media, #page-footer #footer-copyright, #home-container{
+       width: 100vh;
+       padding:0;
+   }
+
+   #top-menu, #big-container, #cat-container, #page-footer #footer-menu, #page-footer #social-media, #page-footer #footer-copyright{
+       padding: 15px;
+   }
+
+   #page-footer #footer-menu ul{
+       margin-right: 25px;
+   }
+
+   #page-footer{
+       display: block;
+   }
+
+   #home-container #big-container .image50 a h1{
+       display: none;
+   }
+}

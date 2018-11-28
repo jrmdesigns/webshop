@@ -14,22 +14,22 @@
     <h1>Categories</h1>
     <section id="cat-container">
         <section class="cat-item">
-            <a href="#"><img src="images/notebooks.jpg" alt="notebooks">
+            <a href="#"><img src="images/categories/notebooks.jpg" alt="notebooks">
             <h1>Notebooks</h1></a>
         </section>
 
         <section class="cat-item">
-            <a href="#"><img src="images/writing.jpg" alt="notebooks">
+            <a href="#"><img src="images/categories/writing.jpg" alt="notebooks">
             <h1>writing</h1></a>
         </section>
 
         <section class="cat-item">
-            <a href="#"><img src="images/backpack.jpg" alt="notebooks">
+            <a href="#"><img src="images/categories/backpack.jpg" alt="notebooks">
             <h1>Backpacks</h1></a>
         </section>
 
         <section class="cat-item">
-            <a href="#"><img src="images/books.jpg" alt="notebooks">
+            <a href="#"><img src="images/categories/books.jpg" alt="notebooks">
             <h1>Books</h1></a>
         </section>
     </section>

@@ -319,7 +319,9 @@ h1, h2{
 }
 
 #home-container #cat-container .cat-item a:hover img{
-    
+    -webkit-filter:blur(0px);
+    filter: blur(0px);
+
 }
 
 #home-container #cat-container .cat-item{
@@ -331,10 +333,14 @@ h1, h2{
 #home-container #cat-container .cat-item img{
     width: 100%;
     border-radius: 50%;
+    transition: all 1s;
+    -webkit-filter:blur(4px);
+    filter: blur(4px);
+    
 }
 
 #home-container #cat-container .cat-item h1{
-    font-size: 16px;
+    font-size: 24px;
     text-align: center;
 }
 
