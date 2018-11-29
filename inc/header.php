@@ -1,3 +1,6 @@
+<?php
+    require_once("config.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gorilla Webshop</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link href="https://file.myfontastic.com/uTsK93DbmyvKn2KS4Z6CBS/icons.css" rel="stylesheet">
+    <!-- <link href="https://file.myfontastic.com/uTsK93DbmyvKn2KS4Z6CBS/icons.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="css/icons.css"/>
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="css/responsive.css"/>
     <script src="js/jquery.js"></script>
@@ -18,12 +22,11 @@
         <section class="left-part">
             <ul>
                 <a href="#" id="menu-button"><li>menu <i class="fas fa-caret-down"></i></li></a>
-                <a href="#"><li>link</li></a>
-                <a href="#"><li>link</li></a>
+                <a href="categorie.php"><li>New</li></a>
             </ul>
         </section>
         <section id="logo">
-            <h1>jorimeshop</h1>
+            <h1><a href="index.php">jorimeshop</a></h1>
         </section>
         <section class="right-part">
             <ul>
@@ -34,64 +37,29 @@
     </header>
 
     <header id="sub-menu">
-        <section class="left-part">
-            <ul>
-                <li>
-                    <h1>Get started</h1>
-                </li>
-                <a href="#">
-                    <li>link</li>
-                </a>
-                <a href="#">
-                    <li>link</li>
-                </a>
-                <a href="#">
-                    <li>link</li>
-                </a>
-                <a href="#">
-                    <li>link</li>
-                </a>
-            </ul>
 
-            <ul>
-                <li>
-                    <h1>Categories</h1>
-                </li>
-                <a href="#">
-                    <li>Notebooks</li>
-                </a>
-                <a href="#">
-                    <li>Writing</li>
-                </a>
-                <a href="#">
-                    <li>Backpack</li>
-                </a>
-                <a href="#">
-                    <li>Books</li>
-                </a>
-            </ul>
-        </section>
 
         <section class="right-part">
-        <section class="link-wrapper">
-            <a href="#"><span class="icon-notebook-streamline icon-link"></span>
-            <span class="icon-link-text">Notebooks</span></a>
-            </section>
-
-            <section class="link-wrapper">
-            <a href="#"><span class="icon-pen-streamline icon-link"></span>
-            <span class="icon-link-text">Writing</span></a>
-            </section>
-
-            <section class="link-wrapper">
-            <a href="#"><span class="icon-backpack-streamline-trekking icon-link"></span>
-            <span class="icon-link-text">Backpack</span></a>
-            </section>
-
-            <section class="link-wrapper">
-            <a href="#"><span class="icon-book-read-streamline icon-link"></span>
-            <span class="icon-link-text">Books</span></a>
-            </section>
+            <section class='link-wrapper'>
+                <a href="categorie.php">
+                 <span class="icon-new icon-link"></span>
+                 <span class="icon-link-text">New</span>
+                </a>
+            </section> 
+            <?php
+            
+            foreach($categorieData as $data){
+                $result  = "<section class='link-wrapper'>";
+                $result .= "<a href='categorie.php?id=" . $data["ID"] . "'>";
+                $result .= $data["Icon"];
+                $result .= "<span class='icon-link-text'>";
+                $result .= $data["CatName"];
+                $result .= "</span>";
+                $result .= "</a>";
+                $result .= "</section>";
+                echo $result;
+            }
+            ?>
         </section>
     </header>
 
