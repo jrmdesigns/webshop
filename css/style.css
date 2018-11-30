@@ -286,7 +286,7 @@ h1, h2{
 
 #home-container #big-container .image100 a:hover h1{
     color: var(--blue-color);
-    transform: translateY(-310px);
+    transform: translate(15px, -310px);
     
 }
 
@@ -296,7 +296,7 @@ h1, h2{
 
 #home-container #big-container .image100 a h1{
     position: relative;
-    transform: translateY(-290px);
+    transform: translate(15px, -290px);
     font-size: 40px;
     margin-left: -40px;
     text-align:center;

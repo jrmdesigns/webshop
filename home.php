@@ -2,7 +2,7 @@
     <section id="big-container">
         <section class="image100">
             <a href="#"><img src="images/categories/headers/best-sells-home.jpg" alt="best sells" class="rounded"/>
-            <h1>Best Sells</h1></a>
+            <h1>Newest</h1></a>
         </section>
 
         <!-- <section class="image50">

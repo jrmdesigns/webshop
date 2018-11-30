@@ -1,5 +1,7 @@
 var orignalSource;
 window.onload = function(){
+    ajax("getFromCart.php", "#shopping-cart-small-list");
+
     $("#menu-button").click(function(){
             $("#sub-menu").fadeToggle(500);
             $("#sub-menu").css("display", "flex");
@@ -58,7 +60,40 @@ window.onload = function(){
         for(i = 0; i < buttonArray.length; i++){
             buttonArray[i].id = "";
         }
-
+        $("#selected-color").val($(this).find("div").attr("class"));
+        
         $(this).attr("id", "color-button-active");
     });
+
+
+    $("#add-to-cart").click(function(e){
+        e.preventDefault();
+        id = window.location.search.substr(1);
+        id = id.split('=')[1];
+        amount = $("#qty").val();
+        color = $("#selected-color").val();
+
+        console.log(amount + "  "  + color + " " + id);
+        ajax("addtocart.php", "#shopping-cart-small-list", "id", id, "amount", amount, "color", color);
+    });
+
+    function ajax(PageTo, output, firstParam, FirstValue, secParam, secValue, thirdParm, thirdValue){
+        console.log("ajax");
+        if(thirdParm != undefined){
+            page = PageTo + "?" + firstParam + "=" + FirstValue + "&" + secParam + "=" + secValue + "&" + thirdParm + "=" + thirdValue;
+        }
+        else if(secParam != undefined){
+            page = PageTo + "?" + firstParam + "=" + FirstValue + "&" + secParam + "=" + secValue; 
+        } else if(firstParam != undefined){
+            page = PageTo + "?" + firstParam + "=" + FirstValue;
+        } else{
+            page = PageTo;
+        }
+
+        console.log(output);
+        console.log(page);
+        $.ajax({url: page, success: function(result){
+            $(output).html(result);
+        }});
+    }
 }

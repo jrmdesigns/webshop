@@ -1,6 +1,6 @@
     <footer id="page-footer">
         <div id="footer-menu">
-            <ul>
+            <!-- <ul>
                 <li>
                     <h1>FEATURED</h1>
                 </li>
@@ -36,7 +36,7 @@
                     <li>LINK</li>
                     
                 </a>
-            </ul>
+            </ul> -->
         </div>
         <div id="social-media">
 
