@@ -59,7 +59,7 @@ require_once("inc/header.php");
 
                 foreach($productsData as $productData){
                     $price = str_replace('.00', '', $productData['Price']);
-                    $result .= "<a href='#'>";
+                    $result .= "<a href='product.php?id=" . $productData["ID"] . "'>";
                     $result .= "<section class='product-item'>";
                     $result .= "<img src='";
                     $result .= $imagesPath . $productData["ImageThumb"] . "'/>";
@@ -98,7 +98,7 @@ require_once("inc/header.php");
                     
                     foreach($productsData as $productData){
                     $price = str_replace('.00', '', $productData['Price']);
-                    $result .= "<a href='#'>";
+                    $result .= "<a href='product.php?id=" . $productData["ID"] . "'>";
                     $result .= "<section class='product-item'>";
                     $result .= "<img src='";
                     $result .= $imagesPath . $productData["ImageThumb"] . "'/>";
