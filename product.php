@@ -66,17 +66,23 @@ if(!isset($_GET["id"]) || !is_numeric($_GET["id"])){
                         <label for="input">Amount:</label>
                         <input type="number" id="qty" min="1" value="1"/>
                     </section>
-                    <section class="form-group color-form">
+                    <!-- <section class="form-group color-form">
                         
                         <label for="input">Color:</label>
                         
-                        <div id="color-buttons">
+                        <div id="color-buttons"> -->
                             <?php
                             $i = 0;
+                            $countArray = count($colorArray);
+
+                            if($countArray != 1)
                             foreach($colorArray as $color){
                                 $i++;
                                 if($i == 1){
-                                    $output = '<input type="hidden" id="selected-color" value="' . $color . '"/>';
+                                    $output  = "<section class='form-group color-form'>";
+                                    $output .= "<label>Color:</label>";
+                                    $output .= "<div id='color-buttons'>";
+                                    $output .= '<input type="hidden" id="selected-color" value="' . $color . '"/>';
                                     $output .= "<div class='color-button' id='color-button-active'>";
                                 } else{
                                     $output = "<div class='color-button'>";
@@ -85,7 +91,11 @@ if(!isset($_GET["id"]) || !is_numeric($_GET["id"])){
                                 $output .= "<div class='" . $color . "'>";
                                 $output .= "</div>";
                                 $output .= "</div>";
-
+                                
+                                if($i == $countArray){
+                                    $output .= "</div>";
+                                    $output .= "</section";
+                                }
                                 echo $output;
                             }
                             ?>
@@ -94,9 +104,9 @@ if(!isset($_GET["id"]) || !is_numeric($_GET["id"])){
                             <div class="color-button"><div class="lightgrey"></div></div>
                             <div class="color-button"><div class="pink"></div></div>
                             <div class="color-button"><div class="purple"></div></div>
-                            <div class="color-button"><div class="darkgrey"></div></div> -->
-                        </div>
-                    </section>
+                            <div class="color-button"><div class="darkgrey"></div></div>
+                        <!-- </div>
+                    </section>-->
 
                     <input type="submit" value="Add to Cart" id="add-to-cart">
                 </form>
