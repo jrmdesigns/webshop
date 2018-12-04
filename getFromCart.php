@@ -18,8 +18,12 @@ foreach($selectCartData as $data){
     $output .= "";
     $output .= "</li>";
 
-    $totalPrice += $price;
+    $totalPrice += $data["Price"];
     echo $output;
+}
+
+if(strpos($totalPrice, '.00') == false){
+    $totalPrice = $totalPrice . ".00";
 }
 
 $endOutput  = '<li class="noborder"></li>';

@@ -1,5 +1,7 @@
 <?php
+    session_start();
     require_once("config.php");
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +32,13 @@
         </section>
         <section class="right-part">
             <ul>
-                <a href="#" id="user-menu-button" style="visibility:hidden;"><li>drop <i class="fas fa-caret-down"></i></li></a>
+                <?php if(isset($_SESSION["logged_in"])){
+                    echo "<a href='#' id='user-menu-button'><li>Account <i class='fas fa-caret-down'></i></li></a>";
+                } else{
+                    echo "<a href='register.php'><li>register</li></a>";
+                    echo "<a href='login.php'><li>login</li></a>";
+                }
+                ?>
                 <a href="#" id="cart-menu-button"><li>cart <i class="fas fa-caret-down"></i></li></a>
             </ul>
         </section>
@@ -65,35 +73,8 @@
 
     <header id="user-menu"> 
         <ul>
-            <a href="#">
-                <li>link</li>
-            </a>
-            <a href="#">
-                <li>link</li>
-            </a>
-            <a href="#">
-                <li>link</li>
-            </a>
-            <a href="#">
-                <li>link</li>
-            </a>
-            <a href="#">
-                <li>link</li>
-            </a>
-            <a href="#">
-                <li>link</li>
-            </a>
-            <a href="#">
-                <li>link</li>
-            </a>
-            <a href="#">
-                <li>link</li>
-            </a>
-            <a href="#">
-                <li>link</li>
-            </a>
-            <a href="#">
-                <li>link</li>
+            <a href="logout.php">
+                <li>logout</li>
             </a>
         </ul> 
     </header>
@@ -102,5 +83,5 @@
         <h1>Shopping Cart</h1>
         <ul id="shopping-cart-small-list">
         </ul>
-        <!-- <button>Go To Cart</button> -->
+        <a href="#"><button>Go To Cart</button></a>
     </section>

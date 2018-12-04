@@ -99,14 +99,8 @@ if(!isset($_GET["id"]) || !is_numeric($_GET["id"])){
                                 echo $output;
                             }
                             ?>
-                            <!-- <div class="color-button" id="color-button-active"><div class='black'></div></div>
-                            <div class="color-button"><div class="blue"></div></div>
-                            <div class="color-button"><div class="lightgrey"></div></div>
-                            <div class="color-button"><div class="pink"></div></div>
-                            <div class="color-button"><div class="purple"></div></div>
-                            <div class="color-button"><div class="darkgrey"></div></div>
-                        <!-- </div>
-                    </section>-->
+
+                        </div>
 
                     <input type="submit" value="Add to Cart" id="add-to-cart">
                 </form>

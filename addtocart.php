@@ -16,8 +16,7 @@ while($row = mysqli_fetch_assoc($selectProductResult)){
 foreach($selectProductData as $data){
     $price = $data["Price"] * $amount;
     $productName = $data["ProductName"];
-    $updateSql = "INSERT INTO cart (ProductID, UserID, Color, Amount, Price, ProductName)
-                  VALUES ('$id', 1, '" . (isset($_GET["color"]) && !empty($_GET["color"]) ? $_GET["color"] : "default") . "', '$amount', '$price', '$productName')";
+    $updateSql = "INSERT INTO cart (ProductID, UserID, Color, Amount, Price, ProductName) VALUES ('$id', 1, '" . (isset($_GET["color"]) && !empty($_GET["color"]) ? $_GET["color"] : "default") . "', '$amount', '$price', '$productName')";
     mysqli_query($dbConnect, $updateSql) or die(mysqli_error($dbConnect));
 }
 
@@ -39,9 +38,14 @@ foreach($selectCartData as $data){
     $output .= "";
     $output .= "</li>";
 
-    $totalPrice += $price;
+    $totalPrice += $data["Price"];
     echo $output;
 }
+
+if(strpos($totalPrice, '.00') == false){
+    $totalPrice = $totalPrice . ".00";
+}
+
 
 $endOutput  = '<li class="noborder"></li>';
 $endOutput .= '<li id="total-message">Total:<span class="price">$' . $totalPrice . '</span></li>';

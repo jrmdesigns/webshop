@@ -5,6 +5,8 @@
 	$dbPass = "";
 
 	$dbConnect = mysqli_connect($dbHost, $dbUser, $dbPass, $database);
+	mysqli_set_charset($dbConnect,"utf8");
+
 	if(!$dbConnect){
 		echo "Unable to connect with the database" . PHP_EOL;
 	} else {

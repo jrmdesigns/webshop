@@ -1,7 +1,7 @@
 var orignalSource;
 window.onload = function(){
-    ajax("getFromCart.php", "#shopping-cart-small-list");
-
+    // ajax("getFromCart.php", "#shopping-cart-small-list");
+    // location.reload(true);
     $("#menu-button").click(function(){
             $("#sub-menu").fadeToggle(500);
             $("#sub-menu").css("display", "flex");
@@ -43,6 +43,9 @@ window.onload = function(){
         $(this).attr("id", "thumb-active");
     });
 
+    
+    // document.getElementsByClassName("image-thumb-button")[0].id = "thumb-active";
+
     $('.color-button').click(function(){
         imageSource = $(".can-change").attr("src");
         splitColor = imageSource.split("_");
@@ -70,30 +73,106 @@ window.onload = function(){
         e.preventDefault();
         id = window.location.search.substr(1);
         id = id.split('=')[1];
-        amount = $("#qty").val();
+        amount = parseInt($("#qty").val());
         color = $("#selected-color").val();
+        productName = $("#product-header h1").html();
+        price = $("#product-header > .price").html();
+        price = parseFloat(price.split("- $")[1]);
 
-        console.log(amount + "  "  + color + " " + id);
-        ajax("addtocart.php", "#shopping-cart-small-list", "id", id, "amount", amount, "color", color);
+        if(color == undefined){
+            color = "default";
+        }
+
+        createItem(id, productName, amount, color,price);
     });
 
-    function ajax(PageTo, output, firstParam, FirstValue, secParam, secValue, thirdParm, thirdValue){
-        console.log("ajax");
-        if(thirdParm != undefined){
-            page = PageTo + "?" + firstParam + "=" + FirstValue + "&" + secParam + "=" + secValue + "&" + thirdParm + "=" + thirdValue;
-        }
-        else if(secParam != undefined){
-            page = PageTo + "?" + firstParam + "=" + FirstValue + "&" + secParam + "=" + secValue; 
-        } else if(firstParam != undefined){
-            page = PageTo + "?" + firstParam + "=" + FirstValue;
-        } else{
-            page = PageTo;
-        }
 
-        console.log(output);
-        console.log(page);
-        $.ajax({url: page, success: function(result){
-            $(output).html(result);
-        }});
+        cartList = document.getElementById("shopping-cart-small-list");
+        itemArray = JSON.parse(localStorage.getItem("items"));
+        if(itemArray == null){
+            itemArray = [];
+        }
+    var product = function(id, name, amount, color, price){
+	    this.ProductId = id,
+	    this.ProductName = name,
+	    this.Amount = amount,
+	    this.Color = color,
+	    this.Price = price
+    };
+
+    function createItem(id, name, amount, color, price){
+        console.log("createItem");
+        console.log(id, name, amount, color, price);
+
+        if(itemArray != null ){
+        for(i = 0; i < itemArray.length; i++){
+            if(itemArray[i].ProductId == id && itemArray[i].Color == color)
+            {
+                itemArray[i].Amount += amount;
+                price = price * amount;
+                itemArray[i].Price += price;
+                localStorage.setItem('items', JSON.stringify(itemArray));
+                getItems();
+                return;
+            }
+        }
     }
+        price = price * amount;
+        item = new product(id, name, amount, color, price);
+        itemArray.push(item);
+
+        localStorage.setItem('items', JSON.stringify(itemArray));
+        getItems();
+    }   
+
+    function getItems(){
+        cartList.innerHTML = "";
+        itemList = JSON.parse(localStorage.getItem("items"));
+        console.log(itemList);
+        // for(i = 0; i < itemArray.length; i++){
+        //     console.log(i);
+        //     var li = document.createElement("li");
+        //     var output = document.createTextNode(itemArray[i].ProductName + "Amount: " + itemArray[i].Amount + " price: $" + itemArray[i].Price);
+
+        //     li.appendChild(output);
+            
+        //     cartList.appendChild(li);
+        // }
+
+        Object.keys(itemList).forEach(function(key){
+            productName = itemList[key]["ProductName"];
+            id = itemList[key]["ProductId"];
+            color = itemList[key]["Color"];
+            price = itemList[key]["Price"];
+            amount = itemList[key]["Amount"];
+            var li = document.createElement("li");
+            // var output = "<a href='product.php?id=" + itemList[key]["ProductId"] + "'>";
+            // output += "<span> x" + amount + "</span>";
+            // output += "<span class='price'>" + price + "</span>";
+            // output = document.createTextNode(output);
+            a = document.createElement("a");
+            a.href = "product.php?id=" + id;
+            productName = document.createTextNode(productName);
+
+            a.appendChild(productName);
+
+            // amountSpan = document.createElement("span");
+            // amountText = document.createTextNode(" x" + amount + " ");
+            // amountSpan.appendChild(amountText);
+
+            priceSpan = document.createElement("span");
+            priceSpan.classList.add("price");
+            priceText = document.createTextNode("$" +price);
+            priceSpan.appendChild(priceText);
+
+
+            li.appendChild(a);
+            // li.appendChild(amountSpan);
+            li.appendChild(priceSpan);
+            
+            cartList.appendChild(li);
+        });
+    }
+    if(localStorage["items"] != undefined)
+        getItems();
 }
