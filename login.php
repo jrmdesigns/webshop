@@ -10,9 +10,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $sqlSelect = "SELECT * FROM users WHERE UserEmail = '$email' AND UserPassword = '$password'";
     $selectResult = mysqli_query($dbConnect, $sqlSelect);
     if(mysqli_num_rows($selectResult) > 0){
+        $userArray = array();
+        while ($row = mysqli_fetch_assoc($selectResult))
+		{
+            $userArray[] = $row;
+        }
+
+        $id;
+        foreach($userArray as $user){
+            $id = $user["ID"];
+            $role = $user["UserRole"];
+        }
+        echo $id;
         $showCorrect = true;
         $correctMessage = "You're logged in";
         $_SESSION["logged_in"] = "true"; 
+        $_SESSION["user_id"] = $id;
+        $_SESSION["user_role"] = $role;
+
         header( "refresh:2;url=index.php" );
     } else{
         $showError = true;

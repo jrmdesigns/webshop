@@ -11,10 +11,10 @@ require_once("inc/header.php");
                 <li>New</li>
             </a>
             <?php
-            foreach($categorieData as $data){
-                $result  = "<a href='categorie.php?id=" . $data["ID"] . "'  >";
+            foreach($categories as $categorie){
+                $result  = "<a href='categorie.php?id=" . $categorie["ID"] . "'  >";
                 $result .= "<li>";
-                $result .= $data["CatName"];
+                $result .= $categorie["CatName"];
                 $result .= "</li>";
                 $result .= "</a>";
 
@@ -26,6 +26,7 @@ require_once("inc/header.php");
 
         <?php
             if(isset($_GET["id"])){
+                $productObject = new Query();
                 $catId = $_GET["id"];
                 $productsSql = "SELECT * FROM products
                 INNER JOIN categories ON products.CatID = categories.ID

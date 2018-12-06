@@ -1,7 +1,10 @@
 <?php
     session_start();
     require_once("config.php");
-    
+    require_once("database.class.php");
+    require_once("query.class.php");
+    $categorieObject = new Query();
+    $imagesPath = "images/";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +26,7 @@
     <header id="top-menu">
         <section class="left-part">
             <ul>
-                <a href="#" id="menu-button"><li>menu <i class="fas fa-caret-down"></i></li></a>
+                <a href="#"><li id="menu-button">menu <i class="fas fa-caret-down"></i></li></a>
                 <a href="categorie.php"><li>new</li></a>
             </ul>
         </section>
@@ -33,13 +36,16 @@
         <section class="right-part">
             <ul>
                 <?php if(isset($_SESSION["logged_in"])){
+                    if($_SESSION["user_role"] == "admin")
+                        echo "<a href='#'><li>Admin</li></a>";    
+
                     echo "<a href='#' id='user-menu-button'><li>Account <i class='fas fa-caret-down'></i></li></a>";
                 } else{
                     echo "<a href='register.php'><li>register</li></a>";
                     echo "<a href='login.php'><li>login</li></a>";
                 }
                 ?>
-                <a href="#" id="cart-menu-button"><li>cart <i class="fas fa-caret-down"></i></li></a>
+                <a href="#"><li  id="cart-menu-button">cart <i class="fas fa-caret-down"></i></li></a>
             </ul>
         </section>
     </header>
@@ -55,24 +61,40 @@
                 </a>
             </section> 
             <?php
-            
-            foreach($categorieData as $data){
+            $categories = $categorieObject->getAllQuery("SELECT * FROM categories");
+            foreach($categories as $categorie){
                 $result  = "<section class='link-wrapper'>";
-                $result .= "<a href='categorie.php?id=" . $data["ID"] . "'>";
-                $result .= $data["Icon"];
+                $result .= "<a href='categorie.php?id=" . $categorie["ID"] . "'>";
+                $result .= $categorie["Icon"];
                 $result .= "<span class='icon-link-text'>";
-                $result .= $data["CatName"];
+                $result .= $categorie["CatName"];
                 $result .= "</span>";
                 $result .= "</a>";
                 $result .= "</section>";
                 echo $result;
             }
+
+            
+            // foreach($categorieData as $data){
+            //     $result  = "<section class='link-wrapper'>";
+            //     $result .= "<a href='categorie.php?id=" . $data["ID"] . "'>";
+            //     $result .= $data["Icon"];
+            //     $result .= "<span class='icon-link-text'>";
+            //     $result .= $data["CatName"];
+            //     $result .= "</span>";
+            //     $result .= "</a>";
+            //     $result .= "</section>";
+            //     echo $result;
+            // }
             ?>
         </section>
     </header>
 
     <header id="user-menu"> 
         <ul>
+            <a href="profile.php">
+                <li>Change info</li>
+            </a>
             <a href="logout.php">
                 <li>logout</li>
             </a>

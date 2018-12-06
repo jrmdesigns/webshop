@@ -14,13 +14,13 @@
     <h1>Categories</h1>
     <section id="cat-container">
         <?php
-            foreach($categorieData as $data){
+            foreach($categories as $categorie){
                 $result  = "<section class='cat-item'>";
-                $result .= "<a href='categorie.php?id=" . $data["ID"] . "'>";
+                $result .= "<a href='categorie.php?id=" . $categorie["ID"] . "'>";
                 $result .= "<img src='";
-                $result .= $imagesPath . $data["Image"];
+                $result .= $imagesPath . $categorie["Image"];
                 $result .= "'>";
-                $result .= "<h1>" . $data["CatName"] . "</h1>";
+                $result .= "<h1>" . $categorie["CatName"] . "</h1>";
                 $result .= "</a>";
                 $result .= "</section>";
                 echo $result;
