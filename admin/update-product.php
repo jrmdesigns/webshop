@@ -1,5 +1,10 @@
 <?php
+    session_start();
+
 include("../inc/config.php");
+if(!isset($_SESSION["user_role"]) || $_SESSION["user_role"] != "admin"){
+    exit;
+}
 $id = $_GET["id"];
 // $content = $_GET["content"];
 $kind = $_GET["kind"];

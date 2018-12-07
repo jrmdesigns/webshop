@@ -98,21 +98,21 @@ require_once("inc/header.php");
                     $result .= "<section id='products-wrapper'>";
                     
                     foreach($productsData as $productData){
-                    $price = str_replace('.00', '', $productData['Price']);
-                    $result .= "<a href='product.php?id=" . $productData["ID"] . "'>";
-                    $result .= "<section class='product-item'>";
-                    $result .= "<img src='";
-                    $result .= $imagesPath . $productData["ImageThumb"] . "'/>";
-                    $result .= "<section class='product-item-info'>";
-                    $result .= "<span class='product-item-info-title'>";
-                    $result .= $productData["ProductName"];
-                    $result .= "</span>";
-                    $result .= "<span class='product-item-info-price'>$";
-                    $result .= $price;
-                    $result .= "</span>";
-                    $result .= "</section>";
-                    $result .= "</section>";
-                    $result .= "</a>";
+                        $price = str_replace('.00', '', $productData['Price']);
+                        $result .= "<a href='product.php?id=" . $productData["ID"] . "'>";
+                        $result .= "<section class='product-item'>";
+                        $result .= "<img src='";
+                        $result .= $imagesPath . $productData["ImageThumb"] . "'/>";
+                        $result .= "<section class='product-item-info'>";
+                        $result .= "<span class='product-item-info-title'>";
+                        $result .= $productData["ProductName"];
+                        $result .= "</span>";
+                        $result .= "<span class='product-item-info-price'>$";
+                        $result .= $price;
+                        $result .= "</span>";
+                        $result .= "</section>";
+                        $result .= "</section>";
+                        $result .= "</a>";
 
                     }
                     $result .= "</section>";

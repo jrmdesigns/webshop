@@ -993,3 +993,20 @@ button:hover{
       width: 100%;
       height: 25px;
   }
+
+
+
+
+
+  #image-edit-images-container{
+      display: flex;
+      justify-content: center;
+
+  }
+  .image-edit-images-container-image{
+      width: 10%;
+  }
+
+  .image-edit-images-container-image img{
+      width: 100px;
+  }

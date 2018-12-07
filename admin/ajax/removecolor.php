@@ -1,4 +1,8 @@
 <?php
+    session_start();
+    if(!isset($_SESSION["user_role"]) || $_SESSION["user_role"] != "admin"){
+        exit;
+    }
 include("../../inc/database.class.php");
 include("../../inc/query.class.php");
 $color = $_GET["color"];
@@ -19,5 +23,4 @@ $colors = implode(", ", $colors);
 echo $colors;
 $update = $query2->query("UPDATE products SET Colors = '$colors' WHERE ID = '$id'");
 
-echo $color . " added";
 ?>

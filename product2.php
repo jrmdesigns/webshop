@@ -34,10 +34,16 @@ if(!isset($_GET["id"]) || !is_numeric($_GET["id"])){
                 <h1><?php echo $data["ProductName"]; ?></h1>
                 <span class="price">- $<?php echo $price; ?></span>
             </section>
+            <?php
+                session_start();
+                if(isset($_SESSION["user_role"]) && $_SESSION["user_role"] == "admin"){
+                    
+            ?>
             <label class="switch"><span style="margin-left:-100px; font-size:28px;">Admin: </span>
   <input type="checkbox" id="checkbox">
   <span class="slider round"></span>
 </label>
+<?php    } ?>
         </section>
 
         <section class="row">
@@ -53,7 +59,7 @@ if(!isset($_GET["id"]) || !is_numeric($_GET["id"])){
                         }
                     }
                     ?>
-                    <img id="addImage" src="images/add.png" style="width:50%;">
+                    <img id="addImage" src="images/settings.png" style="width:50%; display:none;'" >
             </section>
 
             <section id="product-images-big-image">
@@ -116,7 +122,11 @@ if(!isset($_GET["id"]) || !is_numeric($_GET["id"])){
         </section>
     </section>
 </section>
+<?php 
 
+session_start();
+    if(isset($_SESSION["user_role"]) && $_SESSION["user_role"] == "admin"){
+?>
 <section class="full-screen">
 <section id='color-edit-window' style="display:none;">
     <div class="row" id="top">
@@ -160,7 +170,7 @@ if(!isset($_GET["id"]) || !is_numeric($_GET["id"])){
             ?>
         </select>
     </div>
-    <h1 class="correctMessage"style="text-align:Center" id="edit-color-message">sjs</h1>
+    <h1 class="correctMessage"style="text-align:Center" id="edit-color-message"></h1>
 </section>
 
 
@@ -173,33 +183,41 @@ if(!isset($_GET["id"]) || !is_numeric($_GET["id"])){
         <?php
         $query = new Query();
         $imagesData = $query->query("SELECT Images FROM products WHERE ID='$id'");
-        $images = array();
-        $img= $imagesData["Images"];
-        if($img != ""){
-        $images = explode(",", $clr);
-        $imageCount = count($images);
-        $index = 1;
-        foreach($images as $imag){
-            $html = "<div class='color'>";
-            $html .= "<div class='bg-color " . $imag ."'></div>";
-            $html .= "<span class='color-remove'>remove";
-            $html .= "<input type='hidden' value='" . $imag . "'/>";
+        
+        // echo $imagesData["Images"];
+        $imgs = explode(", ", $imagesData["Images"]);
+        // echo $imgs[0];
+
+        foreach($imgs as $img){
+            $html = "<div class='image-edit-images-container-image'>";
+            $html .= "<img src ='images/" . $img ."'/>";
+            $html .= "<span class='image-remove'>remove";
+            $html .= "<input type='hidden' value='" . $img . "'/>";
             $html .= "</span>";
             $html .= "</div>";
             echo $html;
             $index++;
         }
-        }
         ?>
+
+        <section id="add-image">
+      
+        </section>
      </div>
+     <h1 class="correctMessage"style="text-align:Center" id="edit-image-message"></h1>
 </section>
 </section>
 <?php
     }
     }
+    }
 require_once("inc/footer.php");
 ?>
 <script src="js/ajax.js"></script>
+<?php
+    session_start();
+    if(isset($_SESSION["user_role"]) && $_SESSION["user_role"] = "admin"){
+?>
 <script>
 
             id = window.location.search.substr(1)
@@ -251,6 +269,16 @@ require_once("inc/footer.php");
        $(".full-screen").fadeToggle();
     });
 
+    $(".image-remove").click(function(){
+        image = $(this).find("input").val();
+        image = image.split(' ').join('');
+        console.log(image);
+        ajax("admin/ajax/removeimage.php", "#edit-image-message", "id", id, "image", image);
+        setTimeout(function(){
+            ajax("admin/ajax/getimages.php", "#image-edit-images-container", "id", id);
+        },500);
+    });
+
 
     // admin panel
     
@@ -258,6 +286,7 @@ require_once("inc/footer.php");
         
         if(document.getElementById('checkbox').checked) {
             $("#edit-button").css("display","flex");
+            $("#addImage").css("display","block");
         productDescriptionText = $("#product-description").html();
         // productDescriptionText = $("#product-description").html();
         productDescriptionText = productDescriptionText.trim();
@@ -299,9 +328,10 @@ require_once("inc/footer.php");
             ajax("admin/update-product.php", "#specifications ul", "id", id, "kind", "Specifications", "value", newValue);
         });
         } else {
-            alert("f");
+            // alert("f");
         }
     });
 </script>
+    <?php } ?>
 
 <!-- fontpare -->
